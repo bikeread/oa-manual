@@ -1,0 +1,19 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* 隐藏GitHub链接按钮 */
+.btn {
+  display: none !important;
+}
+
+/* 或者更精确地只隐藏"View on GitHub"按钮 */
+a.btn[href*="github.com"] {
+  display: none !important;
+}
+
+/* 隐藏整个页头的GitHub相关元素 */
+.page-header .btn {
+  display: none !important;
+}
