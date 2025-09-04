@@ -17,3 +17,314 @@ a.btn[href*="github.com"] {
 .page-header .btn {
   display: none !important;
 }
+
+/* 页面容器 */
+.page-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* 侧边栏样式 */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 280px;
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.sidebar-header {
+  padding: 1.5rem 1.5rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.1);
+}
+
+.sidebar-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.sidebar-title a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar-title a:hover {
+  color: #f0f0f0;
+}
+
+.sidebar-description {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.8;
+  line-height: 1.4;
+}
+
+/* 导航栏样式 */
+.sidebar-nav {
+  padding: 1rem 0;
+}
+
+.nav-section {
+  margin-bottom: 1.5rem;
+}
+
+.nav-section-title {
+  color: rgba(255,255,255,0.9);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  padding: 0 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin: 0;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.6rem 1.5rem 0.6rem 2rem;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+  position: relative;
+}
+
+.nav-link:hover {
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border-left-color: rgba(255,255,255,0.3);
+}
+
+.nav-link.active {
+  background: rgba(255,255,255,0.15);
+  color: white;
+  border-left-color: #FFD700;
+  font-weight: 500;
+}
+
+.nav-link.active::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background: #FFD700;
+  border-radius: 50%;
+}
+
+/* 主内容区域 */
+.main-content {
+  margin-left: 280px;
+  flex: 1;
+  min-width: 0;
+}
+
+.page-header {
+  background: linear-gradient(120deg, #155799, #159957);
+  color: white;
+  padding: 3rem 4rem;
+  text-align: center;
+}
+
+.project-name {
+  margin-top: 0;
+  margin-bottom: 0.1rem;
+  font-size: 3.25rem;
+  font-weight: normal;
+  opacity: 1;
+  color: white;
+}
+
+.project-tagline {
+  margin-bottom: 2rem;
+  font-weight: normal;
+  opacity: 0.7;
+  font-size: 1.25rem;
+  color: white;
+}
+
+/* 内容样式调整 */
+.main-content section.main-content {
+  padding: 2rem 4rem;
+  max-width: none;
+}
+
+/* 移动端菜单按钮 */
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1001;
+  background: rgba(0,0,0,0.8);
+  border: none;
+  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.3s ease;
+}
+
+.sidebar-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: white;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.sidebar-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.sidebar-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.sidebar-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    width: 280px;
+  }
+  
+  .sidebar-nav.active {
+    transform: translateX(0);
+  }
+  
+  .sidebar-toggle {
+    display: flex;
+  }
+  
+  .main-content {
+    margin-left: 0;
+  }
+  
+  .page-header {
+    padding: 2rem 1.5rem;
+  }
+  
+  .project-name {
+    font-size: 2rem;
+  }
+  
+  .project-tagline {
+    font-size: 1rem;
+  }
+  
+  .main-content section.main-content {
+    padding: 1.5rem 1.5rem;
+  }
+  
+  .page-container.sidebar-open .sidebar {
+    transform: translateX(0);
+  }
+  
+  .page-container.sidebar-open::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sidebar {
+    width: 100vw;
+  }
+  
+  .page-header {
+    padding: 1.5rem 1rem;
+  }
+  
+  .project-name {
+    font-size: 1.75rem;
+  }
+  
+  .main-content section.main-content {
+    padding: 1rem;
+  }
+}
+
+/* 滚动条样式 */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.1);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.3);
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.5);
+}
+
+/* 内容区域的链接样式保持原主题风格 */
+.main-content section.main-content a {
+  color: #1e6bb8;
+}
+
+.main-content section.main-content a:hover {
+  text-decoration: underline;
+}
+
+/* 调整表格等元素的样式以适应新布局 */
+.main-content section.main-content table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
+
+/* 确保代码块等元素不会超出容器 */
+.main-content section.main-content pre {
+  overflow-x: auto;
+}
+
+/* 首页特殊处理 */
+body[class*="index"] .page-header,
+body[class*="readme"] .page-header {
+  display: none;
+}
+
+body[class*="index"] .main-content section.main-content,
+body[class*="readme"] .main-content section.main-content {
+  padding-top: 2rem;
+}
